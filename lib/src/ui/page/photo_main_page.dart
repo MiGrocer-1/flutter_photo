@@ -290,7 +290,11 @@ class _PhotoMainPageState extends State<PhotoMainPage>
     var data = list[index];
     return RepaintBoundary(
       child: GestureDetector(
-        onTap: () => _onItemClick(data, index),
+        onTap: () {
+          var currentSelected = containsEntity(data);
+          changeCheck(!currentSelected, data);
+        },
+        // onTap: () => _onItemClick(data, index),
         child: Stack(
           children: <Widget>[
             ImageItem(
